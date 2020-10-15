@@ -1,0 +1,3 @@
+function showDefinition() {
+	document.getElementById("definition").innerHTML = "JavaScript is a lightweiht interpreted(The code is run from top to bottom and the result is returned immediately),Object Oriented Scripting and programming language.It is used to make interactive webpages (create dinamically updating content, control multimedia, animate imgaes, clickable button and popup manus). it dinamically modify HTML and CSS to update a user interface."
+}
