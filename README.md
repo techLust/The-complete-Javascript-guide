@@ -1,2 +1,0 @@
-# JS-experiment
-JavaScript experiments.
