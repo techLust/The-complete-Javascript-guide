@@ -1,0 +1,31 @@
+.player--0 {
+  height: 20rem;
+  width: 20rem;
+  border: 2px solid green;
+}
+
+.player--active {
+  background-color: lightblue;
+}
+
+.player--1 {
+  height: 20rem;
+  width: 20rem;
+  border: 2px solid orangered;
+}
+
+.buttons {
+  float: right;
+  position: absolute;
+  top: 20%;
+  left: 40%;
+}
+
+.hidden {
+  display: none;
+}
+
+.player--winner {
+  background-color: gray;
+}
+/*# sourceMappingURL=DOMdiceGame.css.map */
