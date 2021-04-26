@@ -22,7 +22,7 @@ const calcAge = birthYear => 2021 - birthYear;
 const years1 = [1997, 1996, 1994, 1991, 1992];
 
 const ages = [calcAge(years1[0]), calcAge(years1[2]), calcAge(years1[years1.length - 1])];
-console.log(ages);
+console.log(`The ages of person is ${ages}`);
 
 //Tip calculator 
 const calcTip = bilValue => bilValue >= 50 && bilValue <= 300 ? bilValue * 15 / 100 : bilValue * 20 / 100;

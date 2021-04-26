@@ -50,6 +50,10 @@ const mark = {
     }
 
 }
+console.log(`*******************************************`)
+for (const details in mark) {
+    console.log(mark[details]);
+}
 
 const jhon = {
     fullName: 'Jhon Smith',
@@ -64,3 +68,15 @@ const jhon = {
 console.log(`${mark.calcBMI() > jhon.calcBMI() ? `
 ${mark.fullName} BMI (${mark.calcBMI()}) has higher than ${jhon.fullName} BMI (${jhon.calcBMI()}).`
     : `${jhon.fullName} BMI (${jhon.calcBMI()}) has heigher than ${mark.fullName} BMI(${mark.calcBMI()}).`}`);
+
+//Looping through object 
+const details = {
+    fName: 'Mahtab',
+    lName: 'Hossain',
+    mahatabAge: 24
+};
+
+for (const property in details) {
+
+    console.log(`Looping through object ${details[property]}`);
+}
