@@ -125,3 +125,38 @@ printGoals1(...game.scored);
 //7
 team1 < team2 && console.log(`Team 1 more likely to win.`);
 
+//********************Coding challange Two************************** */
+console.log(`*******************Challange two ********************`)
+
+//1).
+const playerEntries = Object.entries(game.scored);
+//my solution
+for (const [keys, values] of playerEntries) console.log(`Goal ${keys}: ${values}`);
+//Jonas solution
+for (const [i, player] of game.scored.entries()) console.log(`Goals ${i + 1}: ${player}`)
+
+//2).
+const avg = Object.values(game.odds); console.log(avg)
+let sum = 0; average = 0;
+for (const val of avg) {
+    sum += val;
+    average = sum / avg.length;
+}
+console.log(sum);
+console.log(average)
+
+//3.
+
+// const playerScore = Object.keys(game.scored);
+// console.log(playerScore)
+console.log(`Odd of victory ${game.scored[0]}: ${game.odds.team1}
+Odd of draw : ${game.odds.x}
+Odd of victory ${game.scored[1]}: ${game.odds.team2}`)
+
+//jonas solution
+for (const [team, odd] of Object.entries(game.odds)) {
+    const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+    console.log(`Odd of ${teamStr} ${odd}`);
+}
+
+//Bonus.
