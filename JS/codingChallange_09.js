@@ -115,12 +115,12 @@ const { odds: { team1, team2, x: draw },
 console.log(team1, draw, team2);
 
 //6.
-const printGoals1 = function (...players) {
-    console.log(players);
-    console.log(`${players.length} goals were scored`);
-}
+// const printGoals1 = function (...players) {
+//     console.log(players);
+//     console.log(`${players.length} goals were scored`);
+// }
 
-printGoals1(...game.scored);
+// printGoals1(...game.scored);
 
 //7
 team1 < team2 && console.log(`Team 1 more likely to win.`);
@@ -160,3 +160,61 @@ for (const [team, odd] of Object.entries(game.odds)) {
 }
 
 //Bonus.
+
+
+//****************Coding challange three */
+console.log(`***************Coding challange three******************`)
+const gameEvents = new Map([
+    [17, '⚽️ GOAL'],
+    [36, '🔁 Substitution'],
+    [47, '⚽️ GOAL'],
+    [61, '🔁 Substitution'],
+    [64, '🔶 Yellow card'],
+    [69, '🔴 Red card'],
+    [70, '🔁 Substitution'],
+    [72, '🔁 Substitution'],
+    [76, '⚽️ GOAL'],
+    [80, '⚽️ GOAL'],
+    [92, '🔶 Yellow card'],
+]);
+
+
+//1.Event array
+const events = new Set([
+    ...gameEvents.values()
+]);
+console.log(events);
+//1.Jonas solutin
+const events1 = [...new Set(gameEvents.values())];
+console.log(events1)
+
+//2Removing Yellow card event
+for (const [key, values] of gameEvents) {
+    if (values === 'Yellow card') gameEvents.delete(values)
+};
+
+//2.jonas solution
+gameEvents.delete(64)
+
+//3.Checking avegare 
+const time = [...gameEvents.keys()].pop();
+console.log(time)
+console.log(`An event happend, on average, every ${time / gameEvents.size} minutes`);
+
+
+console.log('Yellow card from minute 64 in unfair');
+
+//4.Checking Halfs
+for (const [keys, checkHalf] of gameEvents.entries()) {
+    (keys <= 45) ? console.log(`First half`) : console.log('Second Half');
+    console.log(keys, checkHalf)
+}
+
+//4,jonas solution
+for (const [min, event] of gameEvents) {
+    const half = min <= 45 ? "First" : "Second";
+    console.log(`${half} Half] ${min}: ${event}`)
+}
+
+
+
