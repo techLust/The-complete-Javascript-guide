@@ -230,7 +230,7 @@ const text = document.querySelector('textarea').value; //Taking value from texta
 
 button.addEventListener('click', function () {
     const text = document.querySelector('textarea').value;
-    const rows = text.split('\n'); //split() cover text to array.
+    const rows = text.split('\n'); //split() convert text to array.
     // console.log(rows)
     for (const [i, row] of rows.entries()) {
         const [first, last] = row.toLowerCase().trim().split('_');
