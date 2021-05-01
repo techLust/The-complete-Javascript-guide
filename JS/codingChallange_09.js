@@ -217,4 +217,34 @@ for (const [min, event] of gameEvents) {
 }
 
 
+//****************Final coding challange************************** 
+console.log(`**********************Final coding challange***************`);
+//Taking HTML element using javaScript
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const button = document.querySelector('button');
+button.textContent = 'ConvertToCamel';
+const text = document.querySelector('textarea').value; //Taking value from textarea
+
+
+button.addEventListener('click', function () {
+    const text = document.querySelector('textarea').value;
+    const rows = text.split('\n'); //split() cover text to array.
+    // console.log(rows)
+    for (const [i, row] of rows.entries()) {
+        const [first, last] = row.toLowerCase().trim().split('_');
+        console.log(row, first, last);
+
+        const output = `${first}${last.replace(last[0], last[0].toUpperCase())}`;
+        console.log(`${output.padEnd(20)}${'👌'.repeat(i + 1)}`);
+    }
+
+});
+
+
+// underscore_Case
+// Some_variable
+// calculate_AGE
+// delayed_departure
 
