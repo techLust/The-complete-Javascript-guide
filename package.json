@@ -1,0 +1,26 @@
+{
+  "name": "js-experiment",
+  "version": "1.0.0",
+  "description": "JavaScript experiments.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahatabhossain/JS-experiment.git"
+  },
+  "author": "Mahatab Hossain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahatabhossain/JS-experiment/issues"
+  },
+  "homepage": "https://github.com/mahatabhossain/JS-experiment#readme",
+  "dependencies": {
+    "leaflet": "^1.7.1",
+    "lodash-es": "^4.17.21",
+    "parcel-bundler": "^1.12.5"
+  },
+  "devDependencies": {}
+}
