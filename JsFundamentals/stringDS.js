@@ -1,5 +1,5 @@
-//**********String fundamental************88 */
-//All strings method are case sensitive.
+//**********String fundamental************ */
+//**********All strings method are case sensitive.
 
 
 const airline = 'Air India';
@@ -10,30 +10,30 @@ console.log(plane[1]);
 console.log(plane[2]);
 console.log(plane[3]);
 
-//Calculating string length in below ways
+//**********Calculating string length in below ways
 console.log(airline.length);
 console.log('GE07E'.length);
 
 
-//String method 
-//IndexOf()
+//**********String method 
+//**********IndexOf()
 console.log(airline.indexOf('r'));
 console.log(airline.lastIndexOf('r'));
 console.log(airline.indexOf('India'))
 
-//slice(start, end,) method selects the elements starting at the given
-//arguments and end at, but does not include the given argument.
+//**********slice(start, end,) method selects the elements starting at the given
+//**********arguments and end at, but does not include the given argument.
 console.log(airline.slice(4));
 console.log(airline.slice(0, 3));
 
-//Using indexOf() as a slice() parameter
+//**********Using indexOf() as a slice() parameter
 console.log(airline.slice(0, airline.indexOf(' ')));
 
-//Extracting string from the end.
+//**********Extracting string from the end.
 console.log(airline.slice(-2));
 console.log(airline.slice(1, -1));
 
-//coding challange find airplane seat is middle or not
+//**********coding challange find airplane seat is middle or not
 const checkSeat = function (seat) {
     const seatNo = seat.slice(-1);
     console.log((seatNo == 'B' || seatNo == 'C') ? "You got middle seat" : "You got lucky seat");
@@ -42,22 +42,22 @@ const checkSeat = function (seat) {
 checkSeat('11B');
 checkSeat('51D');
 
-//JS convert string into object behiend the scene.
+//**********convert string into object behiend the scene.
 console.log(new String('Mahatab'));
 console.log(typeof new String('Mahatab'));
 
-//toLowerCase() and toUpperCase()
+//**********toLowerCase() and toUpperCase()
 console.log(airline.toLowerCase());
 console.log(airline.toUpperCase());
 
-//Fix capitalization in name.
+//**********Fix capitalization in name.
 const passenger = 'MahatAB';
 const passengerLower = passenger.toLowerCase();
 console.log(passengerLower);
 const correctName = passengerLower[0].toUpperCase() + passengerLower.slice(1);
 console.log(correctName);
 
-//Function for name correction
+//**********Function for name correction
 const nameCorrection = function (name) {
     const lower = name.toLowerCase();
     const correct = lower[0].toUpperCase() + lower.slice(1);
@@ -67,7 +67,7 @@ const nameCorrection = function (name) {
 nameCorrection('RomIO');
 nameCorrection('sAmiRul');
 
-//Function for Comparing Emails 
+//**********Function for Comparing Emails 
 const email = 'mahatab@gmail.com';
 const loginEmail = '  Mahatab@Gmail.coM';
 
