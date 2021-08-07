@@ -1,104 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Backist project</title>
-    <link rel="shortcut icon" href="../images/icon.png">
-    <link rel="stylesheet" href="../CSS/bankist_project.css">
-</head>
+    <link rel="shortcut icon" href="../images/icon.png" />
+    <link rel="stylesheet" href="../CSS/bankist_project.css" />
+  </head>
 
-<body>
-
+  <body>
     <!------------------TOP NAVIGATION----------------->
     <nav>
-        <p class="welcome">Log in to get started</p>
-        <img src="../images/icon.png" alt="Logo" class="logo" />
-        <form class="login">
-            <input type="text" placeholder="user" class="login__input login__input--user" />
-            <!--In practice, use type = "password"-->
-            <input type="password" placeholder="password" maxlenght="4" class="login__input login__input--pin" />
-            <button class="login__btn">&rarr;</button>
-        </form>
+      <p class="welcome">Log in to get started</p>
+      <img src="../images/icon.png" alt="Logo" class="logo" />
+      <form class="login">
+        <input
+          type="text"
+          placeholder="user"
+          class="login__input login__input--user"
+        />
+        <!--In practice, use type = "password"-->
+        <input
+          type="password"
+          placeholder="password"
+          maxlenght="4"
+          class="login__input login__input--pin"
+        />
+        <button class="login__btn">&rarr;</button>
+      </form>
     </nav>
 
+    <article class="instruction">
+      <h3>Credential, for login and all other staff.</h3>
+      <ul class="ul-list">
+        <li>
+          Mahatab Hossain :
+          <ul class="ul-list">
+            <li class="li-list">Username: &nbsp;mh</li>
+            <li class="li-list">Password: &nbsp;1111</li>
+          </ul>
+        </li>
+
+        <li>
+          Samirul Islam :
+          <ul class="ul-list">
+            <li class="li-list">Username: &nbsp;si</li>
+            <li class="li-list">Password: &nbsp;2222</li>
+          </ul>
+        </li>
+
+        <li>
+          Romio Ali :
+          <ul class="ul-list">
+            <li class="li-list">Username: &nbsp;ra</li>
+            <li class="li-list">Password: &nbsp;3333</li>
+          </ul>
+        </li>
+
+        <li>
+          Md Tausif :
+          <ul class="ul-list">
+            <li class="li-list">Username: &nbsp;mt</li>
+            <li class="li-list">Password: &nbsp;4444</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+
     <main class="app">
-        <!--BALANCE-->
-        <div class="balance">
-            <div>
-                <p class="balance__label">Current balance</p>
-                <p class="Balance__date">As of <span class="date">05/03/2037</span></p>
-            </div>
-            <p class="balance__value">0000</p>
+      <!--BALANCE-->
+      <div class="balance">
+        <div>
+          <p class="balance__label">Current balance</p>
+          <p class="Balance__date">
+            As of <span class="date">05/03/2037</span>
+          </p>
+        </div>
+        <p class="balance__value">0000</p>
+      </div>
+
+      <!--MOVEMENT-->
+      <div class="movements">
+        <div class="movements__row">
+          <div class="movements__type movements__type--deposit">2 deposit</div>
+          <div class="movements__date">3 days ago</div>
+          <div class="movements__value">4000</div>
         </div>
 
-        <!--MOVEMENT-->
-        <div class="movements">
-            <div class="movements__row">
-                <div class="movements__type movements__type--deposit">2 deposit</div>
-                <div class="movements__date">3 days ago</div>
-                <div class="movements__value">4000</div>
-            </div>
-
-            <div class="movements__row">
-                <div class="movements__type movements__type--withdrawal">1 withdrawal</div>
-                <div class="movements__date">24/01/2037</div>
-                <div class="movements__value">-378</div>
-            </div>
+        <div class="movements__row">
+          <div class="movements__type movements__type--withdrawal">
+            1 withdrawal
+          </div>
+          <div class="movements__date">24/01/2037</div>
+          <div class="movements__value">-378</div>
         </div>
+      </div>
 
+      <!--SUMMARY-->
+      <div class="summary">
+        <p class="summary__label">In</p>
+        <p class="summary__value summary__value--in">0000</p>
+        <p class="summary__label">Out</p>
+        <p class="summary__value summary__value--out">0000</p>
+        <p class="summary__label">Interest</p>
+        <p class="summary__value summary__value--interest">0000</p>
+        <button class="btn--sort">&downarrow;SORT</button>
+      </div>
 
-        <!--SUMMARY-->
-        <div class="summary">
-            <p class="summary__label">In</p>
-            <p class="summary__value summary__value--in">0000</p>
-            <p class="summary__label">Out</p>
-            <p class="summary__value summary__value--out">0000</p>
-            <p class="summary__label">Interest</p>
-            <p class="summary__value summary__value--interest">0000</p>
-            <button class="btn--sort">&downarrow;SORT</button>
-        </div>
+      <!--OPERATION TRANSFER-->
+      <div class="operation operation--transfer">
+        <h2>Transfer money</h2>
+        <form class="form form--transfer">
+          <input type="text" class="form__input form__input--to" />
+          <input type="number" class="form__input form__input--amount" />
+          <button class="form__btn form__btn--transfer">&rarr;</button>
+          <label class="form__label">Transfer to</label>
+          <label class="form_label">Amount</label>
+        </form>
+      </div>
+      <!--OPERATION LOAN-->
+      <div class="operation operation--loan">
+        <h2>Request loan</h2>
+        <form class="form form--loan">
+          <input type="number" class="form__input form__input--loan-amount" />
+          <button class="form__btn form__btn--loan">&rarr;</button>
+          <label class="form__label form__label--loan">Amount</label>
+        </form>
+      </div>
 
-        <!--OPERATION TRANSFER-->
-        <div class="operation operation--transfer">
-            <h2>Transfer money</h2>
-            <form class="form form--transfer">
-                <input type="text" class="form__input form__input--to" />
-                <input type="number" class="form__input form__input--amount" />
-                <button class="form__btn form__btn--transfer">&rarr;</button>
-                <label class="form__label">Transfer to</label>
-                <label class="form_label">Amount</label>
-            </form>
-        </div>
-        <!--OPERATION LOAN-->
-        <div class="operation operation--loan">
-            <h2>Request loan</h2>
-            <form class="form form--loan">
-                <input type="number" class="form__input form__input--loan-amount" />
-                <button class="form__btn form__btn--loan">&rarr;</button>
-                <label class="form__label form__label--loan">Amount</label>
-            </form>
-        </div>
+      <!--OPERATION CLOSE-->
+      <div class="operation operation--close">
+        <h2>Close ccount</h2>
+        <form class="form form--close">
+          <input type="text" class="form__input form__input--user" />
+          <input
+            type="password"
+            maxlength="6"
+            class="form__input form__input--pin"
+          />
+          <button class="form__btn form__btn--close">&rarr;</button>
+          <label class="form__label">Confirm user</label>
+          <label class="form__label">Confirm PIN</label>
+        </form>
+      </div>
 
-        <!--OPERATION CLOSE-->
-        <div class="operation operation--close">
-            <h2>Close ccount</h2>
-            <form class="form form--close">
-                <input type="text" class="form__input form__input--user" />
-                <input type="password" maxlength="6" class="form__input form__input--pin" />
-                <button class="form__btn form__btn--close">&rarr;</button>
-                <label class="form__label">Confirm user</label>
-                <label class="form__label">Confirm PIN</label>
-            </form>
-        </div>
-
-        <!--LOGOUT TIMER-->
-        <p class="logout-timer">You will be logged out in <span class="timer">05:00</span></p>
+      <!--LOGOUT TIMER-->
+      <p class="logout-timer">
+        You will be logged out in <span class="timer">05:00</span>
+      </p>
     </main>
 
-    <script src="../JS/bankist_project.js"></script>
-</body>
-
+    <script src="../JsFundamentals/bankist_project.js"></script>
+  </body>
 </html>
