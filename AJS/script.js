@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-const btn = document.querySelector('.btn-country');
-const countriesContainer = document.querySelector('.countries');
+const btn = document.querySelector(".btn-country");
+const countriesContainer = document.querySelector(".countries");
 
 // Getting country from third party API
-const getCountry = function (data, className = '') {
-    const html = `
+const getCountry = function (data, className = "") {
+  const html = `
     <article class="country ${className}">
     <img class="country__img" src="${data.flag}"/>
     <div class="country__data">
@@ -17,63 +17,58 @@ const getCountry = function (data, className = '') {
     </div >
 </article >
         `;
-    countriesContainer.insertAdjacentHTML('beforeend', html);
-    countriesContainer.style.opacity = 1;
+  countriesContainer.insertAdjacentHTML("beforeend", html);
+  countriesContainer.style.opacity = 1;
 };
 
-
-// Render error 
+// Render error
 
 const renderError = function (msg) {
-    countriesContainer.insertAdjacentText('beforeend', msg);
-    countriesContainer.style.opacity = 1;
+  countriesContainer.insertAdjacentText("beforeend", msg);
+  countriesContainer.style.opacity = 1;
 };
-
-
 
 //************* FETCH DATA USING CALLBACK FUNCTION  ********************/
 
 const getCountryAndNeighbour = function (country) {
+  //**** AJAX cal county one */
+  // "XMLhttpRequest()" object can be used to exhange data with server behind the scene
+  const request = new XMLHttpRequest();
 
-    //**** AJAX cal county one */
-    // "XMLhttpRequest()" object can be used to exhange data with server behind the scene         
-    const request = new XMLHttpRequest();
+  // to send to a server we use open() and send() method.
+  request.open("GET", ` https://restcountries.eu/rest/v2/name/${country}`);
+  request.send();
 
-    // to send to a server we use open() and send() method.
-    request.open('GET', ` https://restcountries.eu/rest/v2/name/${country}`);
-    request.send();
+  // "responseText" store the requested responce.
+  request.addEventListener("load", function () {
+    // Creates JSON data into object.
+    const [data] = JSON.parse(this.responseText);
 
-    // "responseText" store the requested responce.
-    request.addEventListener('load', function () {
+    // Get country one
+    getCountry(data);
 
-        // Creates JSON data into object.
-        const [data] = JSON.parse(this.responseText);
+    // Get neighbour country two
+    const [neighbour] = data.borders;
 
-        // Get country one
-        getCountry(data);
+    if (!neighbour) return;
 
-        // Get neighbour country two
-        const [neighbour] = data.borders;
+    const request2 = new XMLHttpRequest();
+    request2.open(
+      "GET",
+      ` https://restcountries.eu/rest/v2/alpha/${neighbour}`
+    );
+    request2.send();
 
-        if (!neighbour) return;
-
-        const request2 = new XMLHttpRequest();
-        request2.open('GET', ` https://restcountries.eu/rest/v2/alpha/${neighbour}`);
-        request2.send();
-
-        request2.addEventListener('load', function () {
-            const data2 = JSON.parse(this.responseText);
-            console.log(data2);
-            getCountry(data2, 'neighbour');
-        });
-        console.log(data);
-
+    request2.addEventListener("load", function () {
+      const data2 = JSON.parse(this.responseText);
+      console.log(data2);
+      getCountry(data2, "neighbour");
     });
-
+    console.log(data);
+  });
 };
 
 // getCountryAndNeighbour('bharat');
-
 
 // Callback hell implementation
 
@@ -90,11 +85,9 @@ const getCountryAndNeighbour = function (country) {
 //     }, 1000);
 // }, 1000);
 
-
-
 // ****************** PROMISE AND THE FETCH API *******************
 
-console.log(`----------------------- Promise ------------------`)
+console.log(`----------------------- Promise ------------------`);
 // const request2 = new XMLHttpRequest();
 // request2.open('GET', ` https://restcountries.eu/rest/v2/alpha/${neighbour}`);
 // request2.send();
@@ -102,22 +95,17 @@ console.log(`----------------------- Promise ------------------`)
 // const fetchRequest = fetch(` https://restcountries.eu/rest/v2/name/india`);
 // console.log(fetchRequest)
 
-
-
-
 // ************************Fetching country data using Promise()*******************
 
-const getJSON = function (url, errMag = 'Something went wrong') {
-    return fetch(url).then(response => {
-        if (!response.ok)
-            throw new Error(`${errMag} (${response.status})`);
-        return response.json()
-    });
+const getJSON = function (url, errMag = "Something went wrong") {
+  return fetch(url).then((response) => {
+    if (!response.ok) throw new Error(`${errMag} (${response.status})`);
+    return response.json();
+  });
 };
 
-
 // const getCountryData = function (country) {
-//     // "fetch()" always return Promise. 
+//     // "fetch()" always return Promise.
 //     fetch(`https://restcountries.eu/rest/v2/name/${country}`)
 //         // 1). Then method takes two parameter 1. fulfilled 2. rejected.
 //         // 2). "json()" retrun object.
@@ -151,39 +139,36 @@ const getJSON = function (url, errMag = 'Something went wrong') {
 //         .finally(() => countriesContainer.style.opacity = 1);
 // };
 
-
-
 // REFACTORING ABOVE CODE  */
 
 const getCountryData = function (country) {
+  // country 1
+  getJSON(
+    `https://restcountries.eu/rest/v2/name/${country}`,
+    "Country not found"
+  )
+    .then(function (data) {
+      getCountry(data[0]);
+      const neighbour = data[0].borders[0];
+      if (!neighbour) throw new Error("No neighbour found!");
 
-    // country 1
-    getJSON(`https://restcountries.eu/rest/v2/name/${country}`, 'Country not found')
-        .then(function (data) {
-            getCountry(data[0]);
-            const neighbour = data[0].borders[0];
-            if (!neighbour) throw new Error('No neighbour found!');
-
-            // country 2
-            return getJSON(`https://restcountries.eu/rest/v2/alpha/${neighbour}`, 'Country not found');
-
-        })
-        .then(data => getCountry(data, 'neighbour'))
-        .catch(err => {
-            console.error(`${err}...`);
-            renderError(`Something went wrong ${err.message}. Try again!`);
-        })
-        // It will run whether promise fulfilled or rejected.
-        .finally(() => countriesContainer.style.opacity = 1);
+      // country 2
+      return getJSON(
+        `https://restcountries.eu/rest/v2/alpha/${neighbour}`,
+        "Country not found"
+      );
+    })
+    .then((data) => getCountry(data, "neighbour"))
+    .catch((err) => {
+      console.error(`${err}...`);
+      renderError(`Something went wrong ${err.message}. Try again!`);
+    })
+    // It will run whether promise fulfilled or rejected.
+    .finally(() => (countriesContainer.style.opacity = 1));
 };
 
+// Error handling
 
-// Error handling 
-
-btn.addEventListener('click', function () {
-    getCountryData('Bharat'); // Put australia to see no neighbour error.
-
+btn.addEventListener("click", function () {
+  getCountryData("Bharat"); // Put australia to see no neighbour error.
 });
-
-
-
