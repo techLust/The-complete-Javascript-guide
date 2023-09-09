@@ -45,3 +45,13 @@ function x () {
     }
 }
 x();
+
+// Calling inner functon from outside
+
+function x () {
+    var a = 6;
+   return function y () {
+        console.log(a)
+    }
+}
+x()()
